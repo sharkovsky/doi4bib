@@ -14,9 +14,8 @@ Installation
 ============
 
 To install all the dependencies, clone this repository and navigate to it.
-Then run
+Then run::
 
-::
     python setup.py install
 
 Note: it requires Python 3.
@@ -26,9 +25,10 @@ Usage
 =====
 
 ::
+
     doi4bib [-h] [-o OUT_FILE] [--version] [-v] [-vv] bib_file
 
-where `bib_file` is a bibtex file that you want to enrich with DOI references.
+where ``bib_file`` is a bibtex file that you want to enrich with DOI references.
 It will output a copy of that file, in which each entry has been endowed with
 the DOI reference to that article.
 
