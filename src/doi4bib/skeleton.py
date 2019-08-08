@@ -1,23 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-This is a skeleton file that can serve as a starting point for a Python
-console script. To run this script uncomment the following lines in the
-[options.entry_points] section in setup.cfg:
-
-    console_scripts =
-         fibonacci = doi4bib.skeleton:run
-
-Then run `python setup.py install` which will install the command `fibonacci`
-inside your current environment.
-Besides console scripts, the header (i.e. until _logger...) of this file can
-also be used as template for Python modules.
-
-Note: This skeleton file can be safely removed if not needed!
+Contains the entry point to the utility
 """
 
 import argparse
 import sys
 import logging
+import biblib.bib
+from . import bibparser
 
 from doi4bib import __version__
 
@@ -26,22 +16,6 @@ __copyright__ = "sharkovsky"
 __license__ = "mit"
 
 _logger = logging.getLogger(__name__)
-
-
-def fib(n):
-    """Fibonacci example function
-
-    Args:
-      n (int): integer
-
-    Returns:
-      int: n-th Fibonacci number
-    """
-    assert n > 0
-    a, b = 1, 1
-    for i in range(n-1):
-        a, b = b, a+b
-    return a
 
 
 def parse_args(args):
@@ -53,17 +27,28 @@ def parse_args(args):
     Returns:
       :obj:`argparse.Namespace`: command line parameters namespace
     """
+
+    ARG_HELP_STRINGS = {
+      "bib_file": "path to .bib file",
+      "out_file": "path to output file (default: out.bib)",
+      "desc"    : "Utility to copy a bib file and add doi references where missing.\
+out_file is a copy of bib_file, with additional DOI references added whenever possible."
+    }
+
     parser = argparse.ArgumentParser(
-        description="Just a Fibonacci demonstration")
+        description=ARG_HELP_STRINGS["desc"])
+    parser.add_argument(
+        "bib_file",
+        help=ARG_HELP_STRINGS["bib_file"])
+    parser.add_argument(
+        "-o",
+        "--out-file",
+        help=ARG_HELP_STRINGS["out_file"],
+        default="out.bib")
     parser.add_argument(
         "--version",
         action="version",
         version="doi4bib {ver}".format(ver=__version__))
-    parser.add_argument(
-        dest="n",
-        help="n-th Fibonacci number",
-        type=int,
-        metavar="INT")
     parser.add_argument(
         "-v",
         "--verbose",
@@ -100,10 +85,17 @@ def main(args):
     """
     args = parse_args(args)
     setup_logging(args.loglevel)
-    _logger.debug("Starting crazy calculations...")
-    print("The {}-th Fibonacci number is {}".format(args.n, fib(args.n)))
-    _logger.info("Script ends here")
+    _logger.debug('Starting now')
+    with open(args.bib_file) as f:
+        db = biblib.bib.Parser().parse(f).get_entries()
 
+    db = bibparser.add_dois_to_bib(db, _logger)
+
+    with open(args.out_file, 'w') as f:
+        for entry in db.values():
+            f.write(entry.to_bib() + '\n')
+
+    _logger.info('Finished')
 
 def run():
     """Entry point for console_scripts

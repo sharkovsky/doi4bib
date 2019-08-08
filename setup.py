@@ -20,4 +20,11 @@ except VersionConflict:
 
 
 if __name__ == "__main__":
-    setup(use_pyscaffold=True)
+    setup(use_pyscaffold=True,
+          install_requires=[
+              'biblib==0.1.0',
+              'python-Levenshtein'
+              ],
+          dependency_links=[
+              'https://github.com/aclements/biblib/tarball/master/#egg=biblib-0.1.0'
+              ])
