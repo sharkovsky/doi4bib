@@ -2,4 +2,4 @@
 Contributors
 ============
 
-* sharkovsky <francesco.cremonesi@epfl.ch>
+* sharkovsky <francesco.cremonesi0@gmail.com>

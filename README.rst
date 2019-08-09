@@ -37,6 +37,9 @@ the DOI reference to that article.
 
 The DOI reference is obtained by contacting the `Crossref REST API`_
 
+Note that ``doi4bib`` is (so far) the only entry point to this package, and
+that the module is not callable.
+
 Note
 ====
 

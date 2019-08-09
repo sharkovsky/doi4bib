@@ -32,8 +32,7 @@ def crossref_query_title(title):
     request = Request(url)
     request.add_header("User-Agent",
                        "doi4bib utility\
-                       (https://github.com/sharkovsky/doi4bib;\
-                       mailto:francesco.cremonesi0@gmail.com)")
+                       (https://github.com/sharkovsky/doi4bib)")
     try:
         ret = urlopen(request)
         content = ret.read()
