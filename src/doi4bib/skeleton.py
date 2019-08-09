@@ -7,7 +7,7 @@ import argparse
 import sys
 import logging
 import biblib.bib
-from . import bibparser
+from . import bibenricher
 
 from doi4bib import __version__
 
@@ -90,7 +90,7 @@ def main(args):
     with open(args.bib_file) as f:
         db = biblib.bib.Parser().parse(f).get_entries()
 
-    db = bibparser.add_dois_to_bib(db, _logger)
+    db = bibenricher.add_dois_to_bib(db, _logger)
 
     with open(args.out_file, 'w') as f:
         for entry in db.values():
