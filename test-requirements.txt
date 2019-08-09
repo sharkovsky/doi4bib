@@ -4,3 +4,4 @@ unidecode==1.1.1
 -e git+https://github.com/aclements/biblib.git#egg=biblib-0.1.0
 python-Levenshtein==0.12.0
 check-manifest==0.39
+mock==3.0.5
