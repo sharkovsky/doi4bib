@@ -21,11 +21,4 @@ except VersionConflict:
 URL_OF_BIBLIB_EGG = 'https://github.com/aclements/biblib/tarball/master/'
 
 if __name__ == "__main__":
-    setup(use_pyscaffold=True,
-          install_requires=[
-              'biblib==0.1.0',
-              'python-Levenshtein',
-              ],
-          dependency_links=[
-              URL_OF_BIBLIB_EGG + '#egg=biblib-0.1.0'
-              ])
+    setup(use_pyscaffold=True)
