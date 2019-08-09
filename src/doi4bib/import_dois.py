@@ -26,6 +26,18 @@ MAX_RETRIES_ON_ERROR = 3
 
 
 def crossref_query_title(title):
+    """Contacts Crossref API for DOI of a paper
+
+    The paper is identified by its title.
+    The function retrieves the first 5 results, and searches for the one
+    with maximum similarity to the original title.
+
+    Raises an HTTPError in case of failure.
+
+    Args:
+        title: a str with the title of the paper whose DOI we are looking for
+    """
+
     api_url = "https://api.crossref.org/works?"
     params = {"rows": "5", "query.title": title}
     url = api_url + urlencode(params, quote_via=quote_plus)
