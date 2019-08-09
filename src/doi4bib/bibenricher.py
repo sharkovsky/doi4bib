@@ -19,7 +19,8 @@ def add_dois_to_bib(bib_db, logger=None):
     for key, entry in bib_db.items():
 
         title = entry['title']
-        logger.debug(key + ' ' + title)
+        if logger is not None:
+            logger.debug(key + ' ' + title)
 
         if 'doi' in entry.keys():
             if logger is not None:
@@ -31,8 +32,9 @@ def add_dois_to_bib(bib_db, logger=None):
             while not ret['success'] and \
                     retries < import_dois.MAX_RETRIES_ON_ERROR:
                 retries += 1
-                logger.debug(key + ' retry: ' + str(retries))
                 ret = import_dois.crossref_query_title(title)
+                if logger is not None:
+                    logger.debug(key + ' retry: ' + str(retries))
 
             if retries < import_dois.MAX_RETRIES_ON_ERROR:
                 result = ret["result"]
