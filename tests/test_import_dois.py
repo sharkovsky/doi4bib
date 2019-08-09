@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from doi4bib import add_dois_to_bib
 from doi4bib.import_dois import crossref_query_title
 from urllib.error import HTTPError
 from unittest.mock import patch
@@ -9,10 +8,6 @@ import json
 __author__ = "sharkovsky"
 __copyright__ = "sharkovsky"
 __license__ = "mit"
-
-
-def test_handle_empty_db():
-    assert len(add_dois_to_bib(dict()).keys()) == 0
 
 
 @patch('doi4bib.import_dois.urlopen')
