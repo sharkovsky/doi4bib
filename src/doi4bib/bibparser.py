@@ -12,6 +12,9 @@ def add_dois_to_bib(bib_db, logger=None):
         logger: logger instance
     """
 
+    if len(bib_db.keys()) <= 0:
+        return bib_db
+
     for key, entry in bib_db.items():
 
         title = entry['title']

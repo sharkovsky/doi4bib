@@ -9,3 +9,6 @@ except DistributionNotFound:
     __version__ = 'unknown'
 finally:
     del get_distribution, DistributionNotFound
+
+from .bibparser import add_dois_to_bib
+__all__ = ['add_dois_to_bib']
