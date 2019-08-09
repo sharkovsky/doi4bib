@@ -1,0 +1,5 @@
+pytest==4.4.1
+flake8==3.7.7
+unidecode
+-e git+https://github.com/aclements/biblib.git#egg=biblib-0.1.0
+python-Levenshtein
