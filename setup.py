@@ -18,6 +18,7 @@ except VersionConflict:
     print("Error: version of setuptools is too old (<38.3)!")
     sys.exit(1)
 
+URL_OF_BIBLIB_EGG = 'https://github.com/aclements/biblib/tarball/master/'
 
 if __name__ == "__main__":
     setup(use_pyscaffold=True,
@@ -26,5 +27,5 @@ if __name__ == "__main__":
               'python-Levenshtein',
               ],
           dependency_links=[
-              'https://github.com/aclements/biblib/tarball/master/#egg=biblib-0.1.0'
+              URL_OF_BIBLIB_EGG + '#egg=biblib-0.1.0'
               ])

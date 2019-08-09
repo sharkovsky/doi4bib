@@ -31,8 +31,9 @@ def parse_args(args):
     ARG_HELP_STRINGS = {
       "bib_file": "path to .bib file",
       "out_file": "path to output file (default: out.bib)",
-      "desc"    : "Utility to copy a bib file and add doi references where missing.\
-out_file is a copy of bib_file, with additional DOI references added whenever possible."
+      "desc": "Utility to copy a bib file and add doi references where missing.\
+out_file is a copy of bib_file, with additional DOI references added whenever\
+possible."
     }
 
     parser = argparse.ArgumentParser(
@@ -96,6 +97,7 @@ def main(args):
             f.write(entry.to_bib() + '\n')
 
     _logger.info('Finished')
+
 
 def run():
     """Entry point for console_scripts

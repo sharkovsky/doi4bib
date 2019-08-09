@@ -13,7 +13,7 @@ from urllib.error import HTTPError
 from urllib.parse import quote_plus, urlencode
 from urllib.request import urlopen, Request
 
-from Levenshtein import ratio, matching_blocks, editops
+from Levenshtein import ratio
 
 __all__ = ['crossref_query_title']
 
@@ -24,13 +24,16 @@ EMPTY_RESULT = {
 }
 MAX_RETRIES_ON_ERROR = 3
 
+
 def crossref_query_title(title):
     api_url = "https://api.crossref.org/works?"
     params = {"rows": "5", "query.title": title}
     url = api_url + urlencode(params, quote_via=quote_plus)
     request = Request(url)
-    request.add_header("User-Agent", "doi4bib utility \
-(https://github.com/sharkovsky/doi4bib; mailto:francesco.cremonesi0@gmail.com)")
+    request.add_header("User-Agent",
+                       "doi4bib utility\
+                       (https://github.com/sharkovsky/doi4bib;\
+                       mailto:francesco.cremonesi0@gmail.com)")
     try:
         ret = urlopen(request)
         content = ret.read()
@@ -41,7 +44,8 @@ def crossref_query_title(title):
             title = item["title"].pop()
             result = {
                 "crossref_title": title,
-                "similarity": ratio(title.lower(), params["query.title"].lower()),
+                "similarity": ratio(title.lower(),
+                                    params["query.title"].lower()),
                 "doi": item["DOI"]
             }
             if most_similar["similarity"] < result["similarity"]:

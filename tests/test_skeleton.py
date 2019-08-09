@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import pytest
 from doi4bib import add_dois_to_bib
 
 __author__ = "sharkovsky"
