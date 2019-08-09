@@ -4,6 +4,9 @@ doi4bib
 
 A tiny utility to copy a bibtex file and enrich it with DOI references.
 
+.. image:: https://travis-ci.com/sharkovsky/doi4bib.svg?branch=master
+    :target: https://travis-ci.com/sharkovsky/doi4bib
+
 Description
 ===========
 
