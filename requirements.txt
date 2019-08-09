@@ -15,5 +15,6 @@
 # numpy==1.13.3
 # scipy==1.0
 #
-biblib==0.1.0
+unidecode==1.1.1
+-e git+https://github.com/aclements/biblib.git#egg=biblib-0.1.0
 python-Levenshtein==0.12.0
