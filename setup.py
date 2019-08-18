@@ -18,7 +18,22 @@ except VersionConflict:
     print("Error: version of setuptools is too old (<38.3)!")
     sys.exit(1)
 
-URL_OF_BIBLIB_EGG = 'https://github.com/aclements/biblib/tarball/master/'
-
 if __name__ == "__main__":
-    setup(use_pyscaffold=True)
+    setup(#use_pyscaffold=True
+            name='doi4bib',
+            packages=['doi4bib'],
+            use_scm_version=True,
+            setup_requires=['unidecode', 'pyyaml', 'setuptools_scm'],
+            install_requires=[
+                'python-Levenshtein',
+                'biblib==0.1.0'
+                ],
+            dependency_links=[
+                'https://github.com/aclements/biblib/tarball/master/#egg=biblib-0.1.0'
+                ],
+            tests_require=[
+                'pytest',
+                'pytest-cov',
+                'flake8'
+                ]
+            )
