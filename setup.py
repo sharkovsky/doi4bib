@@ -26,7 +26,7 @@ if __name__ == "__main__":
             setup_requires=['unidecode', 'pyyaml', 'setuptools_scm'],
             install_requires=[
                 'python-Levenshtein',
-                'biblib==0.1.0'
+                'biblib@git+https://github.com/aclements/biblib.git#egg=biblib-0.1.0'
                 ],
             dependency_links=[
                 'git+https://github.com/aclements/biblib.git#egg=biblib-0.1.0'
