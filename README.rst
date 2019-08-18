@@ -16,7 +16,12 @@ with additional Digital Object Identifier (DOI) references.
 Installation
 ============
 
-To install all the dependencies, clone this repository and navigate to it.
+You can pip-install directly using the github link::
+
+    pip install git+https://github.com/sharkovsky/doi4bib@0.1.10#egg=doi4bib-0.1.10
+
+
+Or clone this repository and navigate to it.
 Then run::
 
     python setup.py install
