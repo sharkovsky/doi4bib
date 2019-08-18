@@ -35,5 +35,6 @@ if __name__ == "__main__":
                 'pytest',
                 'pytest-cov',
                 'flake8'
-                ]
+                ],
+            python_requires='>=3.5'
             )
