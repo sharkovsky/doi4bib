@@ -18,7 +18,7 @@ Installation
 
 You can pip-install directly using the github link::
 
-    pip install git+https://github.com/sharkovsky/doi4bib@0.1.10#egg=doi4bib-0.1.10
+    pip install -e git+https://github.com/sharkovsky/doi4bib@0.1.10#egg=doi4bib-0.1.10
 
 
 Or clone this repository and navigate to it.
