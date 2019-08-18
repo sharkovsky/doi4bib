@@ -29,7 +29,7 @@ if __name__ == "__main__":
                 'biblib==0.1.0'
                 ],
             dependency_links=[
-                'https://github.com/aclements/biblib/tarball/master/#egg=biblib-0.1.0'
+                'git+https://github.com/aclements/biblib.git#egg=biblib-0.1.0'
                 ],
             tests_require=[
                 'pytest',
